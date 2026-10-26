@@ -1524,51 +1524,63 @@ body {
   color: #c7d2fe;
 }
 
-/* Contact Form */
-.contact-form {
-  background: rgba(10, 15, 26, 0.8);
-  border: 1px solid var(--border-subtle);
-  border-radius: 16px;
-  padding: 2rem;
+/* Recruiter Action Card */
+.recruiter-card {
+  background: rgba(10, 15, 26, 0.85);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 18px;
+  padding: 2.25rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
-.form-title {
-  font-size: 1.25rem;
+.recruiter-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.775rem;
   font-weight: 700;
-  color: #fff;
-  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: var(--accent-cyan);
+  margin-bottom: 1.25rem;
 }
 
-.form-group {
-  margin-bottom: 1.2rem;
-}
-
-.form-group label {
-  display: block;
-  font-size: 0.825rem;
-  font-weight: 600;
+.recruiter-note {
   color: var(--text-secondary);
-  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.75rem;
 }
 
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-subtle);
-  color: #fff;
-  font-family: var(--font-sans);
-  font-size: 0.925rem;
-  transition: border-color var(--transition-fast);
+.recruiter-action-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.75rem;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--accent-cyan);
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+.recruiter-meta-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.recruiter-meta-footer .meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.825rem;
+  color: var(--text-muted);
+}
+
+.recruiter-meta-footer .meta-item i {
+  color: var(--accent-cyan);
 }
 
 /* ==========================================================================
