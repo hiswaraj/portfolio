@@ -216,6 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 8. Scroll Reveal Animations (Intersection Observer)
   const revealElements = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
+    document.body.classList.add('js-reveal-active');
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
