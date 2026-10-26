@@ -60,31 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', updateActiveNav, { passive: true });
 
-  // Copy AI Context Markdown to Clipboard
-  const copyAiBtn = document.getElementById('copyAiBtn');
-  if (copyAiBtn) {
-    copyAiBtn.addEventListener('click', async () => {
-      try {
-        const response = await fetch('Swaraj_Mandal_CV_AI_Context.md');
-        if (!response.ok) throw new Error('File not found');
-        const text = await response.text();
-        await navigator.clipboard.writeText(text);
 
-        const originalHtml = copyAiBtn.innerHTML;
-        copyAiBtn.innerHTML = '<i class="fa-solid fa-check"></i> <span>Copied Context!</span>';
-        copyAiBtn.style.borderColor = 'var(--brand-emerald)';
-        copyAiBtn.style.color = '#34d399';
-
-        setTimeout(() => {
-          copyAiBtn.innerHTML = originalHtml;
-          copyAiBtn.style.borderColor = '';
-          copyAiBtn.style.color = '';
-        }, 3000);
-      } catch (err) {
-        window.open('Swaraj_Mandal_CV_AI_Context.md', '_blank');
-      }
-    });
-  }
 
   // Micro-interaction: Subtle elevation on card hovering
   const cards = document.querySelectorAll('.exec-card, .project-box, .channel-card');
