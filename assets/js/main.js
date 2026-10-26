@@ -1,6 +1,6 @@
 /**
- * Swaraj Mandal - Portfolio Interactive Logic
- * Mobile navigation, smooth scrolling, copy-to-clipboard, active link highlight
+ * Swaraj Mandal - Clean Interactive & Animation Controller
+ * Mobile navigation toggle, scrollspy, interactive AI context clipboard, smooth micro-interactions
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (navMenu.classList.contains('active')) {
         spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
         spans[1].style.opacity = '0';
-        spans[2].style.transform = 'rotate(-45deg) translate(7px, -7px)';
+        spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
       } else {
         spans[0].style.transform = 'none';
         spans[1].style.opacity = '1';
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Close mobile nav when clicking a link
+    // Close mobile nav when clicking any nav item
     navMenu.querySelectorAll('.nav-item').forEach(item => {
       item.addEventListener('click', () => {
         navMenu.classList.remove('active');
@@ -35,22 +35,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Active Link Highlighting on Scroll
+  // Active Navigation Link Highlighting on Scroll
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-item');
 
-  function highlightNavOnScroll() {
-    const scrollY = window.pageYOffset;
+  function updateActiveNav() {
+    const scrollPos = window.pageYOffset + 140;
 
-    sections.forEach(current => {
-      const sectionHeight = current.offsetHeight;
-      const sectionTop = current.offsetTop - 120;
-      const sectionId = current.getAttribute('id');
+    sections.forEach(sec => {
+      const top = sec.offsetTop;
+      const height = sec.offsetHeight;
+      const id = sec.getAttribute('id');
 
-      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+      if (scrollPos >= top && scrollPos < top + height) {
         navLinks.forEach(link => {
           link.classList.remove('active');
-          if (link.getAttribute('href') === `#${sectionId}`) {
+          if (link.getAttribute('href') === `#${id}`) {
             link.classList.add('active');
           }
         });
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  window.addEventListener('scroll', highlightNavOnScroll);
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
 
   // Copy AI Context Markdown to Clipboard
   const copyAiBtn = document.getElementById('copyAiBtn');
@@ -72,8 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const originalHtml = copyAiBtn.innerHTML;
         copyAiBtn.innerHTML = '<i class="fa-solid fa-check"></i> <span>Copied Context!</span>';
-        copyAiBtn.style.borderColor = 'var(--accent-emerald)';
-        copyAiBtn.style.color = 'var(--accent-emerald)';
+        copyAiBtn.style.borderColor = 'var(--brand-emerald)';
+        copyAiBtn.style.color = '#34d399';
 
         setTimeout(() => {
           copyAiBtn.innerHTML = originalHtml;
@@ -86,19 +86,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Subtle Parallax glow effect following cursor
-  const glow1 = document.querySelector('.glow-1');
-  const glow2 = document.querySelector('.glow-2');
-
-  window.addEventListener('mousemove', (e) => {
-    const mouseX = e.clientX / window.innerWidth;
-    const mouseY = e.clientY / window.innerHeight;
-
-    if (glow1) {
-      glow1.style.transform = `translate(${mouseX * 30}px, ${mouseY * 30}px)`;
-    }
-    if (glow2) {
-      glow2.style.transform = `translate(${-mouseX * 25}px, ${-mouseY * 25}px)`;
-    }
+  // Micro-interaction: Subtle elevation on card hovering
+  const cards = document.querySelectorAll('.exec-card, .project-box, .channel-card');
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      card.style.transition = 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)';
+    });
   });
 });
